@@ -1,0 +1,7 @@
+{
+  "name": "albas-en-el-aula",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
