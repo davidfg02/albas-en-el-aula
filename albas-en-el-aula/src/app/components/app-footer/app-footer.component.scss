@@ -1,5 +1,5 @@
 .app-footer {
-  background: var(--ion-color-light);
+  background: var(--ion-color-secondary);
 }
 
 .footer-content {
@@ -18,11 +18,14 @@
   gap: 8px 16px;
 
   a {
-    color: var(--ion-color-medium);
+    color: var(--ion-color-primary-contrast);
     font-size: 0.85rem;
     text-decoration: none;
+    transition: --background 300ms ease-in-out, color 300ms ease-in-out;
 
-    &:hover { color: var(--ion-color-primary); }
+    &:hover {
+      color: var(--ion-color-tertiary);
+    }
   }
 }
 
@@ -31,13 +34,21 @@
   gap: 16px;
 
   a {
-    color: var(--ion-color-primary);
+    color: var(--ion-color-dark);
     font-size: 1.4rem;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      color: var(--ion-color-tertiary);
+      transform: scale(1.15);
+    }
   }
+
 }
 
+
 .footer-copy {
-  margin: 0;
+  margin: 0px;
   font-size: 0.75rem;
-  color: var(--ion-color-medium);
+  color: var(--ion-color-dark);
 }

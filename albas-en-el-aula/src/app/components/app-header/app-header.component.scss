@@ -1,13 +1,108 @@
-
-ion-toolbar {
-  --min-height: 110px;
+.header-toolbar {
+  --border-width: 0;
+  --padding-top: 8px;
+  --padding-bottom: 8px;
 }
 
+.bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; // logo | menú centrado | botones
+  align-items: center;
+  padding: 0 20px;
+}
 
-.logo {
-  width: 85px;
-  height: 85px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
+.logo img {
+  height: 55px;
+  width: auto;
+  border-radius: 8px;
+}
+
+// Píldora blanca central
+.pill {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--app-surface);
+  border-radius: 999px;
+
+  a {
+    padding: 8px 16px;
+    border-radius: 999px;
+    color: var(--ion-color-primary-contrast);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 300ms ease-in-out, background 300ms ease-in-out;
+
+    &:hover {
+      background: var(--ion-color-primary);
+    }
+
+    &.active {
+      background: var(--ion-color-primary);
+    }
+
+    // enlace activo resaltado
+  }
+}
+
+// Botones derecha
+.auth {
+  display: flex;
+  gap: 8px;
+  justify-self: end;
+}
+
+.auth-btn {
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: ease 3;
+  background: var(--ion-color-primary);
+  color: var(--ion-color-primary-contrast);
+  transition: background 300ms ease-in-out, background 300ms ease-in-out;
+
+  &:hover {
+    background: var(--ion-color-secondary);
+  }
+}
+
+/* Tablet y móvil: todo en la misma línea con scroll horizontal suave si no cabe */
+@media (max-width: 768px) {
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0 12px;
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari y Edge */
+    }
+  }
+
+  .logo,
+  .pill,
+  .auth {
+    flex-shrink: 0; /* Evita que los elementos se reduzcan o se deformen */
+  }
+}
+
+/* Móviles pequeños: tamaños de fuente y padding más compactos */
+@media (max-width: 480px) {
+  .pill a {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+
+  .auth-btn {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
 }

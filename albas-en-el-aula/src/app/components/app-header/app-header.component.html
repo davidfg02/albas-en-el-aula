@@ -1,9 +1,61 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-title>
-      <a routerLink="/home" class="logo-link">
-        <img src="assets/icon/logo.jpg" alt="Logo" class="logo">
+<ion-header class="ion-no-border">
+  <ion-toolbar class="header-toolbar">
+    <div class="bar">
+
+      <a routerLink="/home" class="logo">
+        <img src="assets/icon/logo.jpg" alt="Logo">
       </a>
-    </ion-title>
+
+      <nav class="pill">
+        <a routerLink="/home" routerLinkActive="active">Inicio</a>
+        <a routerLink="/catalogo" routerLinkActive="active">Catálogo</a>
+        <a routerLink="/test" routerLinkActive="active">Test</a>
+        <a routerLink="/about-us" routerLinkActive="active">Nosotros</a>
+
+      </nav>
+
+      <div class="auth">
+        @if (!isLoggedIn) {
+          <!-- Estado 1: Visitante (NO logueado) -->
+          <a routerLink="/login" class="auth-btn" color="primary">Entrar</a>
+        <a routerLink="/registro" class="auth-btn">Registrarse</a>
+      } @else {
+        <!-- Estado 2: Usuario Registrado (SÍ logueado) -->
+          
+          <!-- Carrito -->
+          <ion-button class="cart-btn" routerLink="/carrito" color="primary">
+            <ion-icon name="cart-outline"></ion-icon>
+            <ion-badge color="danger" class="cart-badge">2</ion-badge>
+          </ion-button>
+
+          <!-- Avatar -->
+          <ion-avatar id="avatar-trigger" class="avatar-trigger" color="primary">
+            <img src="https://ionicframework.com/docs/img/demos/avatar.svg" alt="Perfil" />
+          </ion-avatar>
+          <!-- Menú Desplegable de Ionic -->
+          <ion-popover trigger="avatar-trigger" triggerAction="click" dismissOnSelect="true">
+            <ng-template>
+              <ion-content>
+                <ion-list lines="none">
+                  <ion-item button routerLink="/perfil">Mi perfil</ion-item>
+                  <ion-item button routerLink="/mis-test">Mis test</ion-item>
+                  <ion-item button routerLink="/rendimiento">Mi rendimiento</ion-item>
+                  
+                  <div class="divider"></div>
+                  
+                  <ion-item button (click)="logout()" color="danger">
+                    <ion-icon name="log-out-outline" slot="start"></ion-icon>
+                    Cerrar sesión
+                  </ion-item>
+                </ion-list>
+              </ion-content>
+            </ng-template>
+          </ion-popover>
+      }
+      </div>
+        
+        
+
+    </div>
   </ion-toolbar>
 </ion-header>

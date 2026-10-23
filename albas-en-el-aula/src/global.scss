@@ -1,46 +1,266 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
+/* ==========================================================================
+   Albas en el Aula - global.scss
+   Roles de Ionic  -> --ion-color-*   (los consumen los componentes de Ionic)
+   Tokens propios  -> --app-*         (neutros, paleta extra, radios, sombras…)
+   ========================================================================== */
 
-/* Core CSS required for Ionic components to work properly */
+/* Core CSS de Ionic (requerido) */
 @import "@ionic/angular/css/core.css";
 
-/* Basic CSS for apps built with Ionic */
+/* Utilidades y estructura básica */
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
 @import "@ionic/angular/css/display.css";
 
-/* Optional CSS utils that can be commented out */
+/* Utilidades opcionales */
 @import "@ionic/angular/css/padding.css";
 @import "@ionic/angular/css/float-elements.css";
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
-
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
-
-
 :root {
-    /* Guarda los valores de los colores */
-    --ion-color-primary: #86ccea;
+  /* ------------------------------------------------------------------------
+     1. TOKENS PROPIOS (--app-*)
+     ------------------------------------------------------------------------ */
 
-    /* Fondo global */
-    --ion-background-color: #f5efef;
+  /* Marca (referencias legibles, mismos valores que los roles de Ionic) */
+  --app-primary: #b8e0eb;
+  --app-secondary: #7cc7d9;
+  --app-emphasis: #4a9bb0;
+  --app-accent: #e6f7f9;
+
+  /* Neutros */
+  --app-text: #1f2d3d;
+  --app-text-secondary: #4b5563;
+  --app-text-disabled: #94a3b8;
+  --app-surface: #f8fafc;
+  --app-border: #e2e8f0;
+  --app-bg: #ffffff;
+
+  /* Estado */
+  --app-success: #22c55e;
+  --app-warning: #f59e0b;
+  --app-error: #ef4444;
+  --app-info: #6366f1;
+
+  /* Paleta extra (opcional) */
+  --app-lavender: #e0e7ff;
+  --app-rose: #ffe4e6;
+  --app-peach: #ffedd5;
+  --app-sand: #f3e9d2;
+
+  /* Forma, sombra y espaciado */
+  --app-radius-sm: 8px;
+  --app-radius-md: 12px;
+  --app-radius-lg: 16px;
+  --app-radius-pill: 999px;
+  --app-shadow-card: 0 2px 8px rgba(31, 45, 61, 0.06);
+  --app-shadow-raised: 0 6px 20px rgba(31, 45, 61, 0.10);
+  --app-space-xs: 4px;
+  --app-space-sm: 8px;
+  --app-space-md: 16px;
+  --app-space-lg: 24px;
+  --app-space-xl: 32px;
+
+  /* Tipografía */
+  --app-font-body: "Inter", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --app-font-script: "Caveat", "Patrick Hand", cursive;
+
+  /* ------------------------------------------------------------------------
+     2. VARIABLES DE LAYOUT DE IONIC (mapeadas a los neutros)
+     ------------------------------------------------------------------------ */
+  --ion-font-family: var(--app-font-body);
+  --ion-background-color: var(--app-bg);
+  --ion-background-color-rgb: 255, 255, 255;
+  --ion-text-color: var(--app-text);
+  --ion-text-color-rgb: 31, 45, 61;
+  --ion-border-color: var(--app-border);
+  --ion-item-background: var(--app-bg);
+  --ion-card-background: var(--app-surface);
+  --ion-toolbar-background: var(--app-bg);
+  --ion-toolbar-color: var(--app-text);
+  --ion-tab-bar-background: var(--app-bg);
+  --ion-tab-bar-color: var(--app-text-disabled);
+  --ion-tab-bar-color-selected: var(--app-emphasis);
+  --ion-placeholder-color: var(--app-text-disabled);
+
+  /* ------------------------------------------------------------------------
+     3. ROLES DE COLOR DE IONIC (--ion-color-*)
+     ------------------------------------------------------------------------ */
+
+  /* Primario #b8e0eb (texto oscuro encima: el blanco no tiene contraste) */
+  --ion-color-primary: #b8e0eb;
+  --ion-color-primary-rgb: 184, 224, 235;
+  --ion-color-primary-contrast: #1f2d3d;
+  --ion-color-primary-contrast-rgb: 31, 45, 61;
+  --ion-color-primary-shade: #a2c5cf;
+  --ion-color-primary-tint: #c1e3ed;
+
+  /* Secundario #7cc7d9 */
+  --ion-color-secondary: #7cc7d9;
+  --ion-color-secondary-rgb: 124, 199, 217;
+  --ion-color-secondary-contrast: #1f2d3d;
+  --ion-color-secondary-contrast-rgb: 31, 45, 61;
+  --ion-color-secondary-shade: #6dafbf;
+  --ion-color-secondary-tint: #89cddd;
+
+  /* Énfasis #4a9bb0 -> tertiary */
+  --ion-color-tertiary: #4a9bb0;
+  --ion-color-tertiary-rgb: 74, 155, 176;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #41889b;
+  --ion-color-tertiary-tint: #5ca5b8;
+
+  /* Éxito #22c55e */
+  --ion-color-success: #22c55e;
+  --ion-color-success-rgb: 34, 197, 94;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #1ead53;
+  --ion-color-success-tint: #38cb6e;
+
+  /* Advertencia #f59e0b */
+  --ion-color-warning: #f59e0b;
+  --ion-color-warning-rgb: 245, 158, 11;
+  --ion-color-warning-contrast: #1f2d3d;
+  --ion-color-warning-contrast-rgb: 31, 45, 61;
+  --ion-color-warning-shade: #d88b0a;
+  --ion-color-warning-tint: #f7a823;
+
+  /* Error #ef4444 -> danger */
+  --ion-color-danger: #ef4444;
+  --ion-color-danger-rgb: 239, 68, 68;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #d23c3c;
+  --ion-color-danger-tint: #f15757;
+
+  /* Info #6366f1 (rol propio: <ion-badge color="info">) */
+  --ion-color-info: #6366f1;
+  --ion-color-info-rgb: 99, 102, 241;
+  --ion-color-info-contrast: #ffffff;
+  --ion-color-info-contrast-rgb: 255, 255, 255;
+  --ion-color-info-shade: #575ad4;
+  --ion-color-info-tint: #7275f2;
+
+    /* Dark = texto principal #1f2d3d */
+  --ion-color-dark: #254263;
+  --ion-color-dark-rgb: 31, 45, 61;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1b2836;
+  --ion-color-dark-tint: #354250;
+
+  /* Medium = texto secundario #4b5563 */
+  --ion-color-medium: #4b5563;
+  --ion-color-medium-rgb: 75, 85, 99;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #424b57;
+  --ion-color-medium-tint: #5d6673;
+
+  /* Light = fondo de tarjetas #f8fafc */
+  --ion-color-light: #f8fafc;
+  --ion-color-light-rgb: 248, 250, 252;
+  --ion-color-light-contrast: #1f2d3d;
+  --ion-color-light-contrast-rgb: 31, 45, 61;
+  --ion-color-light-shade: #dadcde;
+  --ion-color-light-tint: #f9fbfc;
+}
+
+/* ==========================================================================
+   Clases de color de Ionic (necesarias para color="primary", etc.)
+   ========================================================================== */
+
+.ion-color-primary {
+  --ion-color-base: var(--ion-color-primary);
+  --ion-color-base-rgb: var(--ion-color-primary-rgb);
+  --ion-color-contrast: var(--ion-color-primary-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-primary-contrast-rgb);
+  --ion-color-shade: var(--ion-color-primary-shade);
+  --ion-color-tint: var(--ion-color-primary-tint);
+}
+
+.ion-color-secondary {
+  --ion-color-base: var(--ion-color-secondary);
+  --ion-color-base-rgb: var(--ion-color-secondary-rgb);
+  --ion-color-contrast: var(--ion-color-secondary-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-secondary-contrast-rgb);
+  --ion-color-shade: var(--ion-color-secondary-shade);
+  --ion-color-tint: var(--ion-color-secondary-tint);
+}
+
+.ion-color-tertiary {
+  --ion-color-base: var(--ion-color-tertiary);
+  --ion-color-base-rgb: var(--ion-color-tertiary-rgb);
+  --ion-color-contrast: var(--ion-color-tertiary-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-tertiary-contrast-rgb);
+  --ion-color-shade: var(--ion-color-tertiary-shade);
+  --ion-color-tint: var(--ion-color-tertiary-tint);
+}
+
+.ion-color-success {
+  --ion-color-base: var(--ion-color-success);
+  --ion-color-base-rgb: var(--ion-color-success-rgb);
+  --ion-color-contrast: var(--ion-color-success-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-success-contrast-rgb);
+  --ion-color-shade: var(--ion-color-success-shade);
+  --ion-color-tint: var(--ion-color-success-tint);
+}
+
+.ion-color-warning {
+  --ion-color-base: var(--ion-color-warning);
+  --ion-color-base-rgb: var(--ion-color-warning-rgb);
+  --ion-color-contrast: var(--ion-color-warning-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-warning-contrast-rgb);
+  --ion-color-shade: var(--ion-color-warning-shade);
+  --ion-color-tint: var(--ion-color-warning-tint);
+}
+
+.ion-color-danger {
+  --ion-color-base: var(--ion-color-danger);
+  --ion-color-base-rgb: var(--ion-color-danger-rgb);
+  --ion-color-contrast: var(--ion-color-danger-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-danger-contrast-rgb);
+  --ion-color-shade: var(--ion-color-danger-shade);
+  --ion-color-tint: var(--ion-color-danger-tint);
+}
+
+.ion-color-info {
+  --ion-color-base: var(--ion-color-info);
+  --ion-color-base-rgb: var(--ion-color-info-rgb);
+  --ion-color-contrast: var(--ion-color-info-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-info-contrast-rgb);
+  --ion-color-shade: var(--ion-color-info-shade);
+  --ion-color-tint: var(--ion-color-info-tint);
+}
+
+.ion-color-medium {
+  --ion-color-base: var(--ion-color-medium);
+  --ion-color-base-rgb: var(--ion-color-medium-rgb);
+  --ion-color-contrast: var(--ion-color-medium-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-medium-contrast-rgb);
+  --ion-color-shade: var(--ion-color-medium-shade);
+  --ion-color-tint: var(--ion-color-medium-tint);
+}
+
+.ion-color-dark {
+  --ion-color-base: var(--ion-color-dark);
+  --ion-color-base-rgb: var(--ion-color-dark-rgb);
+  --ion-color-contrast: var(--ion-color-dark-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-dark-contrast-rgb);
+  --ion-color-shade: var(--ion-color-dark-shade);
+  --ion-color-tint: var(--ion-color-dark-tint);
+}
+
+.ion-color-light {
+  --ion-color-base: var(--ion-color-light);
+  --ion-color-base-rgb: var(--ion-color-light-rgb);
+  --ion-color-contrast: var(--ion-color-light-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-light-contrast-rgb);
+  --ion-color-shade: var(--ion-color-light-shade);
+  --ion-color-tint: var(--ion-color-light-tint);
 }

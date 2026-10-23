@@ -8,6 +8,7 @@
       <a routerLink="/condiciones">Condiciones de compra</a>
     </nav>
 
+
     <div class="footer-social">
       <a href="https://www.tiktok.com/@albas.enelaula" target="_blank" rel="noopener" aria-label="TikTok">
         <ion-icon name="logo-tiktok"></ion-icon>
@@ -19,7 +20,18 @@
         <ion-icon name="mail-outline"></ion-icon>
       </a>
     </div>
-
+    <div class="footer-form" slot="end">
+      <ion-list>
+        <ion-item>
+          <ion-input class="footer-form" label="Suscribete" type="email" [clearInput]="true" placeholder="correo@ejemplo"></ion-input>
+          <ion-button color="tertiary">
+            Suscribete
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </div>
     <p class="footer-copy">© {{ year }} Albas en el Aula. Todos los derechos reservados.</p>
+    
   </div>
+
 </ion-footer>
